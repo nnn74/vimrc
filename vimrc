@@ -38,8 +38,8 @@ endif
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree.git'
-Plugin 'msanders/snipmate.vim.git'
-Plugin 'ervandew/supertab.git'
+"Plugin 'msanders/snipmate.vim.git'
+"Plugin 'ervandew/supertab.git'
 " Bundle 'joonty/vim-phpunitqf.git'
 " Bundle 'wincent/Command-T.git'
 Plugin 'kien/ctrlp.vim'
@@ -51,7 +51,10 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'majutsushi/tagbar'
 "Bundle 'bryanthankins/vim-aspnetide'   
 Plugin 'bling/vim-airline'
-
+Plugin 'SirVer/ultisnips'
+" ultisnips snippets are separate
+Plugin 'honza/vim-snippets'
+Plugin 'Shougo/neocomplcache.vim'
 map <F2> :NERDTreeToggle .<CR>
 nmap<F3> :TagbarToggle<CR>
 " let g:snips_trigger_key'<c-J>'
@@ -62,7 +65,47 @@ let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_enable_signs = 1
 "let g:syntastic_error_symbol = 'x'
 "let g:syntastic_warning_symbol = '..'
+let g:UltiSnipsExpandTrigger='<tab>'
+
+let g:acp_enableAtStartup = 0
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 2
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplcache_enable_auto_close_preview = 0
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+inoremap <expr><C-g>    neocomplcache#undo_completion()
+inoremap <expr><C-l>    neocomplcache#complete_common_string()
+
+inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+inoremap <expr>. neocomplcache#close_popup() . "."
+inoremap <expr>( neocomplcache#close_popup() . "("
+inoremap <expr>) neocomplcache#close_popup() . ")"
+inoremap <expr><space> neocomplcache#close_popup() . " "
+inoremap <expr>; neocomplcache#close_popup() . ";"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h>    neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>    neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>    neocomplcache#close_popup()
+inoremap <expr><C-e>    neocomplcache#cancel_popup()
+inoremap <expr><ESC> pumvisible() ? neocomplcache#cancel_popup() : "\<esc>"
+
+let g:neocomplcache_enable_auto_select = 1
+
+
+
+
 call vundle#end()
+
+
+
+
 filetype plugin indent on
 " or to ignore
 "
