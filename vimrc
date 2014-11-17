@@ -24,7 +24,58 @@ runtime! debian.vim
 set nocompatible
 filetype off
 
+"""""""""""""""""""""""""""""
+" => Vundle
+"""""""""""""""""""""""""""""
+if has('win32') || has('win64')
+  set rtp+=~/vimfiles/bundle/vundle/
+  call vundle#begin('$HOME/vimfiles/bundle/')
+else
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#begin()
+endif
+
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree.git'
+Plugin 'msanders/snipmate.vim.git'
+Plugin 'ervandew/supertab.git'
+" Bundle 'joonty/vim-phpunitqf.git'
+" Bundle 'wincent/Command-T.git'
+Plugin 'kien/ctrlp.vim'
+" Bundle 'fholgado/minibufexpl.vim.git'
+"Bundle 'tomtom/checksyntax_vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-surround'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'majutsushi/tagbar'
+"Bundle 'bryanthankins/vim-aspnetide'   
+Plugin 'bling/vim-airline'
+
+map <F2> :NERDTreeToggle .<CR>
+nmap<F3> :TagbarToggle<CR>
+" let g:snips_trigger_key'<c-J>'
+let g:SuperTabDefaultCompletionType="context"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_enable_syntastic = 1
+let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_enable_signs = 1
+"let g:syntastic_error_symbol = 'x'
+"let g:syntastic_warning_symbol = '..'
+call vundle#end()
 filetype plugin indent on
+" or to ignore
+"
+"filetype plugin on
+"
+" :PluginList          - list configured
+" :PluginInstall(!)    - install/(update)
+" :PluginSearch(!) foo - search (or refresh cache) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+
+"""""""""""""""""""
+" END Vundle      "
+"""""""""""""""""""
 
 set autoread
 
@@ -177,45 +228,8 @@ iab teh the
 iab Teh The
 iab becuase because
 
-"""""""""""""""""""""""""""""
-" => Vundle
-"""""""""""""""""""""""""""""
-if has('win32') || has('win64')
-  set rtp+=~/vimfiles/bundle/vundle/
-  call vundle#rc('$HOME/vimfiles/bundle/')
-else
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
-endif
-
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree.git'
-Bundle 'msanders/snipmate.vim.git'
-Bundle 'ervandew/supertab.git'
-" Bundle 'joonty/vim-phpunitqf.git'
-" Bundle 'wincent/Command-T.git'
-Bundle 'kien/ctrlp.vim'
-" Bundle 'fholgado/minibufexpl.vim.git'
-"Bundle 'tomtom/checksyntax_vim'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-surround'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'majutsushi/tagbar'
-"Bundle 'bryanthankins/vim-aspnetide'   
-Bundle 'bling/vim-airline'
 
 
-map <F2> :NERDTreeToggle .<CR>
-nmap<F3> :TagbarToggle<CR>
-" let g:snips_trigger_key'<c-J>'
-let g:SuperTabDefaultCompletionType="context"
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_enable_syntastic = 1
-let g:syntastic_python_checkers = ['pyflakes']
-let g:syntastic_enable_signs = 1
-"let g:syntastic_error_symbol = 'x'
-"let g:syntastic_warning_symbol = '..'
 
 "autocmd BufWriteCmd *.html,*.css,*.js :call Refresh_browser()
 "function! Refresh_browser()
