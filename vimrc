@@ -24,6 +24,7 @@ runtime! debian.vim
 set nocompatible
 filetype off
 
+
 """""""""""""""""""""""""""""
 " => Vundle
 """""""""""""""""""""""""""""
@@ -51,10 +52,14 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'majutsushi/tagbar'
 "Bundle 'bryanthankins/vim-aspnetide'   
 Plugin 'bling/vim-airline'
+Plugin 'JazzCore/neocomplcache-ultisnips'
 Plugin 'SirVer/ultisnips'
 " ultisnips snippets are separate
 Plugin 'honza/vim-snippets'
 Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets'
+
 map <F2> :NERDTreeToggle .<CR>
 nmap<F3> :TagbarToggle<CR>
 " let g:snips_trigger_key'<c-J>'
@@ -63,8 +68,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_enable_syntastic = 1
 let g:syntastic_python_checkers = ['pyflakes']
 let g:syntastic_enable_signs = 1
-"let g:syntastic_error_symbol = 'x'
-"let g:syntastic_warning_symbol = '..'
+let g:syntastic_error_symbol = 'x'
+let g:syntastic_warning_symbol = '..'
 let g:UltiSnipsExpandTrigger='<tab>'
 
 let g:acp_enableAtStartup = 0
@@ -98,7 +103,8 @@ inoremap <expr><ESC> pumvisible() ? neocomplcache#cancel_popup() : "\<esc>"
 
 let g:neocomplcache_enable_auto_select = 1
 
-
+"imap <C-k>  <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>  <Plug>(neosnippet_expand_or_jump)
 
 
 call vundle#end()
