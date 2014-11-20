@@ -25,6 +25,8 @@ set nocompatible
 filetype off
 
 
+let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 """""""""""""""""""""""""""""
 " => Vundle
 """""""""""""""""""""""""""""
@@ -57,6 +59,8 @@ Plugin 'SirVer/ultisnips'
 " ultisnips snippets are separate
 Plugin 'honza/vim-snippets'
 Plugin 'Shougo/neocomplcache.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'junegunn/vim-easy-align'
 "Plugin 'Shougo/neosnippet'
 "Plugin 'Shougo/neosnippet-snippets'
 
@@ -106,6 +110,8 @@ let g:neocomplcache_enable_auto_select = 1
 "imap <C-k>  <Plug>(neosnippet_expand_or_jump)
 "smap <C-k>  <Plug>(neosnippet_expand_or_jump)
 
+vmap <Enter> <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
 
 call vundle#end()
 
@@ -128,8 +134,6 @@ filetype plugin indent on
 
 set autoread
 
-let mapleader = " "
-let g:mapleader = " "
 
 set nowb
 set nobackup
@@ -178,7 +182,9 @@ set magic 		"  regex turn magic on
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
+set tm=1000
+set timeoutlen=2000
+set ttimeoutlen=100
 
 " ingen backslash, problem med vundle på windows
 " set shellslash
@@ -238,8 +244,8 @@ set encoding=utf-8
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""
 " Map space to / och Ctrl-space to ?
-map <space> /
-map <c-space> ?
+"map <space> /
+"map <c-space> ?
 
 " disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
